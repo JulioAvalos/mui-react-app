@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -8,7 +8,6 @@ import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
 
 import logo from '../../assets/logo.svg';
-
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -51,6 +50,12 @@ const useStyles = makeStyles(theme => ({
 const header = props => {
     // eslint-disable-next-line
     const classes = useStyles();
+    // eslint-disable-next-line
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event, value) => {
+        setValue(value);
+    }
 
     return (
         <React.Fragment>
@@ -58,7 +63,12 @@ const header = props => {
                 <AppBar position="fixed" color="primary">
                     <Toolbar disableGutters>
                         <img alt="company logo" className={classes.logo} src={logo} />
-                        <Tabs className={classes.tabContainer}>
+                        <Tabs 
+                            value={value} 
+                            onChange={handleChange} 
+                            className={classes.tabContainer}
+                            indicatorColor="primary"
+                        >
                             <Tab className={classes.tab} label="Home"/>
                             <Tab className={classes.tab} label="Sevices"/>
                             <Tab className={classes.tab} label="The Revolution"/>
