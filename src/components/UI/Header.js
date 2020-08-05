@@ -11,6 +11,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import logo from '../../assets/logo.svg';
 
@@ -79,6 +82,16 @@ const useStyles = makeStyles(theme => ({
         "&:hover": {
             opacity: 1
         }
+    },
+    drawerIconContainer: {
+        marginLeft: 'auto',
+        "&:hover": {
+            backgroundColor: 'transparent'
+        }
+    },
+    drawerIcon: {
+        height: '50px',
+        width: '50px'
     }
 }));
 
@@ -86,10 +99,13 @@ const Header = props => {
     
     const classes = useStyles();
     const theme = useTheme();
+    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
     const matches = useMediaQuery(theme.breakpoints.down('md'));
+
+    const [openDrawer, setOpenDrawer] = useState(false);
     const [value, setValue] = useState(0);
     const [anchorEl, setAnchorEl] = useState(null);
-    const [open, setOpen] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const handleChange = (event, value) => {
@@ -98,17 +114,17 @@ const Header = props => {
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        setOpen(true);
+        setOpenMenu(true);
     };
 
     const handleClose = (event) => {
         setAnchorEl(null);
-        setOpen(false);
+        setOpenMenu(false);
     };
     
     const handleMenuItemClick = (event, index) => {
         setAnchorEl(null);
-        setOpen(false);
+        setOpenMenu(false);
         setSelectedIndex(index);
     };
     
@@ -227,7 +243,7 @@ const Header = props => {
             <Menu 
                 id="simple-menu" 
                 anchorEl={anchorEl} 
-                open={open} 
+                open={openMenu} 
                 onClose={handleClose}
                 classes={{paper: classes.menu}}
                 MenuListProps={{onMouseLeave: handleClose}}
@@ -252,6 +268,22 @@ const Header = props => {
         </React.Fragment>
     );
 
+    const drawer = (
+        <React.Fragment>
+            <SwipeableDrawer 
+                disableBackdropTransition={!iOS} 
+                disableDiscovery={iOS} 
+                open={openDrawer} 
+                onOpen={() => setOpenDrawer(true)}
+                onClose={() => setOpenDrawer(false)}>
+                    Example Drawer
+            </SwipeableDrawer>
+            <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
+                <MenuIcon className={classes.drawerIcon} />
+            </IconButton>
+        </React.Fragment>
+    );
+
     return (
         <React.Fragment>
             <ElevationScroll>
@@ -265,7 +297,7 @@ const Header = props => {
                             onClick={() => setValue(0)}>
                             <img alt="company logo" className={classes.logo} src={logo} />
                         </Button>
-                        {matches ? null : tabs}
+                        {matches ? drawer : tabs}
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
