@@ -9,6 +9,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import mobileAppsIcon from '../assets/mobileIcon.svg';
 
 const useStyles = makeStyles(theme => ({
     animation: {
@@ -137,12 +138,13 @@ const LandingPage = () => {
             </Grid>
             <Grid item>
                 {" "}
-                {/*-----Services Block-----*/}
+                {/*-----Services Block (Custom Software)-----*/}
                 <Grid 
                     container 
                     direction="row" 
                     justify={matchesSM ? 'center' : undefined }
-                    className={classes.serviceContainer}>
+                    className={classes.serviceContainer}
+                >
                     <Grid 
                         item 
                         style={{
@@ -167,6 +169,38 @@ const LandingPage = () => {
                     </Grid>
                     <Grid item>
                         <img className={classes.icon} alt="custom software icon" src={customSoftwareIcon} />
+                    </Grid>
+                </Grid>
+                {" "}
+                {/*-----Services Block (iOS/Android)-----*/}
+                <Grid 
+                    container 
+                    direction="row" 
+                    justify={matchesSM ? 'center' : 'flex-end' }
+                    className={classes.serviceContainer}
+                >
+                    <Grid 
+                        item 
+                        style={{
+                            textAlign: matchesSM ? 'center' : undefined
+                        }} 
+                    >
+                        <Typography variant="h4">
+                            iOS/Android Development
+                        </Typography>
+                        <Typography variant="subtitle1" className={classes.subtitle}>
+                            Extend Functionality. Extend Access. Increase Engagemenet.
+                        </Typography>
+                        <Typography variant="subtitle1">
+                            Integrate your web experience or create a standalone app {matchesSM ? null : <br />} with either mobile platform
+                        </Typography>
+                        <Button variant="outlined" className={classes.learnButton}>
+                            <span style={{marginRight: 10}}>Learn More</span>
+                            <ButtonArrow widht={10} height={10} fill={theme.palette.common.blue}/>
+                        </Button>
+                    </Grid>
+                    <Grid item style={{marginRight: matchesSM ? 0 : '5em'}}>
+                        <img className={classes.icon} alt="custom software icon" src={mobileAppsIcon} />
                     </Grid>
                 </Grid>
             </Grid>
