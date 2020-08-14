@@ -14,12 +14,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Header value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
+        <Header 
+          value={value} 
+          setValue={setValue} 
+          selectedIndex={selectedIndex} 
+          setSelectedIndex={setSelectedIndex} 
+        />
         <Switch>
           <Route 
             exact 
             path="/" 
-            component={LandingPage} 
+            render={(props) => 
+              <LandingPage 
+                {...props}
+                setValue={setValue} 
+                setSelectedIndex={setSelectedIndex}/>
+            } 
           />
           <Route 
             exact 
@@ -62,7 +72,10 @@ function App() {
             component={() => <div>Estimate</div>} 
           />
         </Switch>
-        <Footer value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/>
+        <Footer 
+          setValue={setValue} 
+          setSelectedIndex={setSelectedIndex}
+        />
       </BrowserRouter>
     </ThemeProvider>
   );
