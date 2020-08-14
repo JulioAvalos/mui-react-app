@@ -185,6 +185,9 @@ const Header = props => {
                         }
                     }
                     break;
+                case '/estimate': 
+                    props.setValue(5);
+                    break;
                 default:
                     break;
             }
@@ -199,8 +202,8 @@ const Header = props => {
                 className={classes.tabContainer}
                 indicatorColor="primary"
             >
-                {routes.map((route, index) => {
-                    return <Tab 
+                {routes.map((route, index) => (
+                    <Tab 
                         key={`${route}${index}`}
                         className={classes.tab} 
                         component={Link} 
@@ -210,14 +213,16 @@ const Header = props => {
                         aria-haspopup={route.ariaPopup}
                         onMouseOver={route.mouseOver}
                         />
-            })}
+            ))}
             </Tabs>
             <Button 
                 variant="contained" 
                 color="secondary" 
                 className={classes.button}
                 component={Link}
-                to="/estimate">
+                to="/estimate"
+                onClick={() => props.setValue(5)}
+            >
                 Free Estimate
             </Button>
             <Menu 
