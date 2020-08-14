@@ -6,11 +6,14 @@ import Button from '@material-ui/core/Button';
 import ButtonArrow from './UI/ButtonArrow';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import mobileAppsIcon from '../assets/mobileIcon.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
+import revolutionBackground from '../assets/repeatingBackground.svg';
 
 const useStyles = makeStyles(theme => ({
     animation: {
@@ -40,7 +43,7 @@ const useStyles = makeStyles(theme => ({
         ...theme.typography.learnButton,
         fontSize: '0.9rem',
         height: 45,
-        widht: 145
+        width: 145
     },
     learnButton: {
         ...theme.typography.learnButton,
@@ -85,6 +88,28 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             padding: 25
         }
+    },
+    revolutionBackground: {
+        backgroundImage: `url(${revolutionBackground})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        height: '100%',
+        width: '100%'
+    },
+    revolutionCard: {
+        position: 'absolute',
+        boxShadow: theme.shadows[10],
+        borderRadius: 15, 
+        padding: '10em',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop:  '8em',
+            paddingBottom: '8em',
+            paddingLeft: 0,
+            paddingRight: 0,
+            borderRadius: 0,
+            width: '100%'        
+        }
     }
 }));
 
@@ -95,7 +120,7 @@ const LandingPage = () => {
 
     const defaultOptions = {
         loop: true,
-        autoplay: true, 
+        autoplay: false, 
         animationData: animationData,
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
@@ -165,7 +190,7 @@ const LandingPage = () => {
                         </Typography>
                         <Button variant="outlined" className={classes.learnButton}>
                             <span style={{marginRight: 10}}>Learn More</span>
-                            <ButtonArrow widht={10} height={10} fill={theme.palette.common.blue}/>
+                            <ButtonArrow width={10} height={10} fill={theme.palette.common.blue}/>
                         </Button>
                     </Grid>
                     <Grid item>
@@ -197,7 +222,7 @@ const LandingPage = () => {
                         </Typography>
                         <Button variant="outlined" className={classes.learnButton}>
                             <span style={{marginRight: 10}}>Learn More</span>
-                            <ButtonArrow widht={10} height={10} fill={theme.palette.common.blue}/>
+                            <ButtonArrow width={10} height={10} fill={theme.palette.common.blue}/>
                         </Button>
                     </Grid>
                     <Grid item style={{marginRight: matchesSM ? 0 : '5em'}}>
@@ -234,7 +259,7 @@ const LandingPage = () => {
                         </Typography>
                         <Button variant="outlined" className={classes.learnButton}>
                             <span style={{marginRight: 10}}>Learn More</span>
-                            <ButtonArrow widht={10} height={10} fill={theme.palette.common.blue}/>
+                            <ButtonArrow width={10} height={10} fill={theme.palette.common.blue}/>
                         </Button>
                     </Grid>
                     <Grid item>
@@ -243,6 +268,42 @@ const LandingPage = () => {
                             alt="website icon" 
                             src={websitesIcon} 
                         />
+                    </Grid>
+                </Grid>
+                <Grid item>
+                    <Grid 
+                        container 
+                        style={{height: '100em', marginTop: '12em'}} 
+                        alignItems="center" 
+                        justify="center"
+                    >
+                        <Card className={classes.revolutionCard}>
+                            <CardContent>
+                                <Grid container direction="column" style={{textAlign: 'center'}}>
+                                    <Grid item>
+                                        <Typography variant="h3" gutterBottom>
+                                            The Revolution
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography>
+                                            Visionary insights coupled with cutting-edge technology is a recipe for revolution 
+                                        </Typography>
+                                        <Button variant="outlined" className={classes.learnButtonHero}>
+                                            <span style={{marginRight: 10}}>
+                                                Learn More
+                                            </span>
+                                            <ButtonArrow 
+                                                width={15} 
+                                                height={15} 
+                                                fill={theme.palette.common.blue} 
+                                            />
+                                        </Button>
+                                    </Grid>
+                                </Grid>        
+                            </CardContent>
+                        </Card>
+                        <div className={classes.revolutionBackground} />
                     </Grid>
                 </Grid>
             </Grid>
