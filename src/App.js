@@ -6,6 +6,7 @@ import { theme } from './components/Theme';
 import Header from './components/UI/Header';
 import Footer from './components/UI/Footer';
 import LandingPage from './components/LandingPage';
+import Services from './components/Services';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -34,7 +35,12 @@ function App() {
           <Route 
             exact 
             path="/services" 
-            component={() => <div>Service</div>} 
+            render={(props) => 
+              <Services 
+                {...props}
+                setValue={setValue} 
+                setSelectedIndex={setSelectedIndex}/>
+            } 
           />
           <Route 
             exact 
