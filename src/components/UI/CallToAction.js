@@ -86,7 +86,7 @@ const CallToAction = props => {
                                 to="/revolution"
                                 variant="outlined" 
                                 className={classes.learnButton}
-                                onCLick={() => props.setValue(2)}
+                                onClick={() => props.setValue(2)}
                             >
                                 <span style={{marginRight: 5}}>Learn More</span>
                                 <ButtonArrow 
@@ -105,7 +105,7 @@ const CallToAction = props => {
                     to="/estimate"
                     variant="contained" 
                     className={classes.estimateButton}
-                    onCLick={() => props.setValue(5)}
+                    onClick={() => props.setValue(5)}
                 >Free Estimate</Button>
             </Grid>
         </Grid>

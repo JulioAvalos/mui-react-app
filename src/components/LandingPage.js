@@ -157,7 +157,7 @@ const LandingPage = (props) => {
                                     to="/estimate"
                                     className={classes.estimateButton} 
                                     variant="contained"
-                                    onCLick={() => props.setValue(5)}
+                                    onClick={() => props.setValue(5)}
                                 >
                                     Free Estimate
                                 </Button>
@@ -168,7 +168,7 @@ const LandingPage = (props) => {
                                     to="/revolution"
                                     variant="outlined" 
                                     className={classes.learnButtonHero}
-                                    onCLick={() => props.setValue(2)}
+                                    onClick={() => props.setValue(2)}
                                 >
                                     <span style={{ marginRight: 10 }}>
                                         Learn More
@@ -218,7 +218,7 @@ const LandingPage = (props) => {
                             to="/customsoftware"
                             variant="outlined" 
                             className={classes.learnButton}
-                            onCLick={() => {props.setValue(1); props.setSelectedIndex(1);}}
+                            onClick={() => {props.setValue(1); props.setSelectedIndex(1);}}
                         >
                             <span style={{ marginRight: 10 }}>Learn More</span>
                             <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -256,7 +256,7 @@ const LandingPage = (props) => {
                             to="/mobileapps"
                             variant="outlined" 
                             className={classes.learnButton}    
-                            onCLick={() => {props.setValue(1); props.setSelectedIndex(2);}}
+                            onClick={() => {props.setValue(1); props.setSelectedIndex(2);}}
                         >
                             <span style={{ marginRight: 10 }}>Learn More</span>
                             <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -299,7 +299,7 @@ const LandingPage = (props) => {
                             to="/websites"
                             variant="outlined" 
                             className={classes.learnButton}
-                            onCLick={() => {props.setValue(1); props.setSelectedIndex(3);}}
+                            onClick={() => {props.setValue(1); props.setSelectedIndex(3);}}
                         >
                             <span style={{ marginRight: 10 }}>Learn More</span>
                             <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -338,7 +338,7 @@ const LandingPage = (props) => {
                                             to="/revolution"
                                             variant="outlined" 
                                             className={classes.learnButtonHero}
-                                            onCLick={() => props.setValue(2)}
+                                            onClick={() => props.setValue(2)}
                                         >
                                             <span style={{ marginRight: 10 }}>Learn More</span>
                                             <ButtonArrow
@@ -385,7 +385,7 @@ const LandingPage = (props) => {
                                             variant="outlined" 
                                             style={{ color: 'white', borderColor: 'white' }} 
                                             className={classes.learnButtonHero}
-                                            onCLick={() => props.setValue(3)}
+                                            onClick={() => props.setValue(3)}
                                         >
                                             <span style={{ marginRight: 10 }}>Learn More</span>
                                             <ButtonArrow
@@ -415,7 +415,7 @@ const LandingPage = (props) => {
                                             variant="outlined" 
                                             style={{ color: 'white', borderColor: 'white' }} 
                                             className={classes.learnButtonHero}
-                                            onCLick={() => props.setValue(4)}
+                                            onClick={() => props.setValue(4)}
                                         >
                                             <span style={{ marginRight: 10 }}>Learn More</span>
                                             <ButtonArrow
