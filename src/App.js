@@ -12,6 +12,7 @@ import MobileApps from './components/MobileApps';
 import Websites from './components/Websites';
 import Revolution from './components/Revolution';
 import About from './components/About';
+import Contact from './components/Contact';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -100,7 +101,12 @@ function App() {
           <Route 
             exact 
             path="/contact" 
-            component={() => <div>Contact Us</div>} 
+            render={(props) => 
+              <Contact 
+                {...props}
+                setValue={setValue} 
+                setSelectedIndex={setSelectedIndex}/>
+            } 
           />
           <Route 
             exact
