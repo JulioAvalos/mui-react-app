@@ -9,6 +9,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ButtonArrow from './UI/ButtonArrow';
 
 import background from '../assets/background.jpg';
+import mobileBackground from '../assets/mobileBackground.jpg';
 import phoneIcon from '../assets/phone.svg';
 import emailIcon from '../assets/email.svg';
 import airplane from '../assets/send.svg';
@@ -20,7 +21,10 @@ const useStyles = makeStyles(theme => ({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         height: '60em',
-        paddingBottom: '10em'
+        paddingBottom: '10em',
+        [theme.breakpoints.down("md")]:{
+            backgroundImage: `url(${mobileBackground})`
+        }
     },
     estimateButton: {
         ...theme.typography.estimate,
@@ -34,7 +38,7 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             backgroundColor: theme.palette.secondary.light
         },
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             marginLeft: 0,
             marginRight: 0
         }
@@ -44,7 +48,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: '0.7rem',
         height: 35,
         padding: 5,
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             marginBottom: '2em'
         }
     },
@@ -70,6 +74,7 @@ const Contact = props => {
     const classes = useStyles();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+    const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -84,16 +89,28 @@ const Contact = props => {
                 direction="column"
                 justify="center" 
                 alignItems="center" 
+                style={{
+                    marginBottom: matchesMD ? '5em' : 0, 
+                    marginTop: matchesSM ?  '1em' : matchesMD ? '5em' : 0
+                }}
                 lg={4} 
                 xl={3}
             >
                 <Grid item>
                     <Grid container direction="column">
                         <Grid item>
-                            <Typography variant="h2" style={{ lineHeight: 1 }}>
+                            <Typography 
+                                align={matchesMD ? 'center' : undefined} 
+                                variant="h2" 
+                                style={{ lineHeight: 1 }}
+                            >
                                 Contact Us
                             </Typography>
-                            <Typography variant="body1" style={{ color: theme.palette.common.blue }}>
+                            <Typography 
+                                align={matchesMD ? 'center' : undefined} 
+                                variant="body1" 
+                                style={{ color: theme.palette.common.blue }}
+                            >
                                 We're waiting.
                             </Typography>
                         </Grid>
@@ -131,49 +148,51 @@ const Contact = props => {
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid item container style={{maxWidth: '20em'}}>
-                            <Grid item>
+                        <Grid item container direction="column" style={{maxWidth: '20em'}}>
+                            <Grid item style={{marginBottom: '0.5em'}}>
                                 <TextField
                                     label="Name"
                                     id="name"
+                                    fullWidth
                                     value={name}
                                     onChange={(event) => {
                                         setName(event.target.value)
                                     }}
                                 />
                             </Grid>
-                            <Grid item>
+                            <Grid item style={{marginBottom: '0.5em'}}> 
                                 <TextField
                                     label="Email"
                                     id="email"
+                                    fullWidth
                                     value={email}
                                     onChange={(event) => {
                                         setEmail(event.target.value)
                                     }}
                                 />
                             </Grid>
-                            <Grid>
+                            <Grid item style={{marginBottom: '0.5em'}}>
                                 <TextField
                                     label="Phone"
                                     id="phone"
+                                    fullWidth
                                     value={phone}
                                     onChange={(event) => {
                                         setPhone(event.target.value)
                                     }}
                                 />
                             </Grid>
-                        </Grid>
-                        <Grid item container style={{maxWidth: '20em'}}>
-                            <Grid item>
-                                <TextField
-                                    InputProps={{disableUnderline: true}}
-                                    value={message}
-                                    className={classes.message}
-                                    multiline
-                                    rows={10}
-                                    id="message"
-                                    onChange={event => setMessage(event.target.value)}
-                                />
+                            <Grid item  style={{maxWidth: '20em'}}>
+                                    <TextField
+                                        InputProps={{disableUnderline: true}}
+                                        value={message}
+                                        fullWidth
+                                        className={classes.message}
+                                        multiline
+                                        rows={10}
+                                        id="message"
+                                        onChange={event => setMessage(event.target.value)}
+                                    />
                             </Grid>
                         </Grid>
                         <Grid item container justify="center" style={{marginTop: '2em'}}>
@@ -192,27 +211,33 @@ const Contact = props => {
             <Grid 
                 item 
                 container 
+                direction={matchesMD ? "column": "row"}
                 className={classes.background} 
                 alignItems="center" 
+                justify={matchesMD ? "center" : undefined}
                 lg={8}
                 xl={9}
             >
                 <Grid
                     item
                     style={{
-                        marginLeft: matchesSM ? 0 : '3em',
-                        textAlign: matchesSM ? 'center' : 'inherit'
+                        marginLeft: matchesMD ? 0 : '3em',
+                        textAlign: matchesMD ? 'center' : 'inherit'
                     }}
                 >
                     <Grid container direction="column">
                         <Grid item>
-                            <Typography variant="h2">
+                            <Typography align={matchesMD ? "center" : undefined} variant="h2">
                                 Simple Software.<br />Revolutionary Results.
                         </Typography>
-                            <Typography variant="subtitle2" style={{ fontSize: '1.5rem' }}>
+                            <Typography 
+                                align={matchesMD ? "center" : undefined} 
+                                variant="subtitle2" 
+                                style={{ fontSize: '1.5rem' }}
+                            >
                                 Take advantage of the 21st Century.
                         </Typography>
-                            <Grid container justify={matchesSM ? 'center' : undefined} item>
+                            <Grid container justify={matchesMD ? 'center' : undefined} item>
                                 <Button
                                     component={Link}
                                     to="/revolution"
