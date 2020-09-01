@@ -10,6 +10,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ButtonArrow from './UI/ButtonArrow';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import CirculaProgress from '@material-ui/core/CircularProgress';
 
 import background from '../assets/background.jpg';
 import mobileBackground from '../assets/mobileBackground.jpg';
@@ -96,6 +97,8 @@ const Contact = props => {
 
     const [open, setOpen] = useState(false);
 
+    const [loading, setLoading] = useState(false);
+
     const onChange = event => {
         let valid;
 
@@ -126,11 +129,33 @@ const Contact = props => {
     };
 
     const onConfirm = () => {
+        setLoading(true);
         setOpen(true);
         axios.get('https://us-central1-ng-recipe-book-19d7d.cloudfunctions.net/sendMail')
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .then(res => {
+            setLoading(false);
+            setOpen(false);
+            setName("");
+            setEmail("");
+            setPhone("");
+            setMessage("");
+            console.log(res);
+        })
+        .catch(err => {
+            setLoading(false)
+        });
     }
+
+    const buttonContents = (
+        <React.Fragment>
+            Send Message
+            <img
+                src={airplane}
+                alt="paper airplane"
+                style={{ marginLeft: '1em' }}
+            />
+        </React.Fragment>
+    );
 
     return (
         <Grid container direction="row">
@@ -257,12 +282,7 @@ const Contact = props => {
                                 className={classes.sendButton}
                                 onClick={() => setOpen(true)}
                             >
-                                Send Message
-                                <img
-                                    src={airplane}
-                                    alt="paper airplane"
-                                    style={{ marginLeft: '1em' }}
-                                />
+                                {buttonContents}
                             </Button>
                         </Grid>
                     </Grid>
@@ -358,12 +378,7 @@ const Contact = props => {
                                 className={classes.sendButton}
                                 onClick={onConfirm}
                             >
-                                Send Message
-                                <img
-                                    src={airplane}
-                                    alt="paper airplane"
-                                    style={{ marginLeft: '1em' }}
-                                />
+                               {loading ? <CirculaProgress size={30} /> : buttonContents}
                             </Button>
                         </Grid>
                     </Grid>
