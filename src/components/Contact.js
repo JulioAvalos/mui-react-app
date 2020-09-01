@@ -100,7 +100,11 @@ const Contact = props => {
 
     const [loading, setLoading] = useState(false);
 
-    const [alert, setAlert] = useState({open: false, message: "", backgroundColor: ""});
+    const [alert, setAlert] = useState({
+        open: false, 
+        message: "", 
+        backgroundColor: ""
+    });
 
     const onChange = event => {
         let valid;
@@ -134,7 +138,15 @@ const Contact = props => {
     const onConfirm = () => {
         setLoading(true);
         setOpen(true);
-        axios.get('https://us-central1-ng-recipe-book-19d7d.cloudfunctions.net/sendMail')
+        axios.get(
+            'https://us-central1-ng-recipe-book-19d7d.cloudfunctions.net/sendMail',
+            { params: {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message
+            }}
+        )
         .then(res => {
             setLoading(false);
             setOpen(false);
