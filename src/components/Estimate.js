@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -36,8 +36,8 @@ import estimateAnimation from "../animations/estimateAnimation/data.json";
 
 const useStyles = makeStyles(theme => ({
     icon: {
-       width: '12em',
-       height: '10em'
+        width: '12em',
+        height: '10em'
     },
     estimateButton: {
         ...theme.typography.estimate,
@@ -52,6 +52,327 @@ const useStyles = makeStyles(theme => ({
         }
     },
 }));
+
+const defaultQuestions = [
+    {
+        id: 1,
+        title: "Which service are you interested in?",
+        active: true,
+        options: [
+            {
+                id: 1,
+                title: "Custom Software Development",
+                subtitle: null,
+                icon: software,
+                iconAlt: "three floating screens",
+                selected: false,
+                cost: 0
+            },
+            {
+                id: 2,
+                title: "iOS/Android App Development",
+                subtitle: null,
+                icon: mobile,
+                iconAlt: "outlines of phones and tablets",
+                selected: false,
+                cost: 0
+            },
+            {
+                id: 3,
+                title: "Website Development",
+                subtitle: null,
+                icon: website,
+                iconAlt: "computer outline",
+                selected: false,
+                cost: 0
+            }
+        ]
+    }
+];
+
+const softwareQuestions = [
+    {
+        id: 1,
+        title: "Which service are you interested in?",
+        active: false,
+        options: [
+            {
+                id: 1,
+                title: "Custom Software Development",
+                subtitle: null,
+                icon: software,
+                iconAlt: "three floating screens",
+                selected: false,
+                cost: 0
+            },
+            {
+                id: 2,
+                title: "iOS/Android App Development",
+                subtitle: null,
+                icon: mobile,
+                iconAlt: "outlines of phones and tablets",
+                selected: false,
+                cost: 0
+            },
+            {
+                id: 3,
+                title: "Website Development",
+                subtitle: null,
+                icon: website,
+                iconAlt: "computer outline",
+                selected: false,
+                cost: 0
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: "Which platforms do you need supported?",
+        subtitle: "Select all that apply.",
+        options: [
+            {
+                id: 1,
+                title: "Web Application",
+                subtitle: null,
+                icon: website,
+                iconAlt: "computer outline",
+                selected: false,
+                cost: 1000
+            },
+            {
+                id: 2,
+                title: "iOS Application",
+                subtitle: null,
+                icon: iPhone,
+                iconAlt: "outline of iphone",
+                selected: false,
+                cost: 1000
+            },
+            {
+                id: 3,
+                title: "Android Application",
+                subtitle: null,
+                icon: android,
+                iconAlt: "outlines of android phone",
+                selected: false,
+                cost: 1000
+            }
+        ],
+        active: true
+    },
+    {
+        id: 3,
+        title: "Which features do you expect to use?",
+        subtitle: "Select all that apply.",
+        options: [
+            {
+                id: 1,
+                title: "Photo/Video",
+                subtitle: null,
+                icon: camera,
+                iconAlt: "camera outline",
+                selected: false,
+                cost: 250
+            },
+            {
+                id: 2,
+                title: "GPS",
+                subtitle: null,
+                icon: gps,
+                iconAlt: "gps pin",
+                selected: false,
+                cost: 250
+            },
+            {
+                id: 3,
+                title: "File Transfer",
+                subtitle: null,
+                icon: upload,
+                iconAlt: "outline of cloud with arrow pointing up",
+                selected: false,
+                cost: 250
+            }
+        ],
+        active: false
+    },
+    {
+        id: 4,
+        title: "Which features do you expect to use?",
+        subtitle: "Select all that apply.",
+        options: [
+            {
+                id: 1,
+                title: "Users/Authentication",
+                subtitle: null,
+                icon: usersIcon,
+                iconAlt: "outline of a person with a plus sign",
+                selected: false,
+                cost: 250
+            },
+            {
+                id: 2,
+                title: "Biometrics",
+                subtitle: null,
+                icon: biometrics,
+                iconAlt: "fingerprint",
+                selected: false,
+                cost: 250
+            },
+            {
+                id: 3,
+                title: "Push Notifications",
+                subtitle: null,
+                icon: bell,
+                iconAlt: "outline of a bell",
+                selected: false,
+                cost: 250
+            }
+        ],
+        active: false
+    },
+    {
+        id: 5,
+        title: "What type of custom features do you expect to need?",
+        subtitle: "Select one.",
+        options: [
+            {
+                id: 1,
+                title: "Low Complexity",
+                subtitle: "(Informational)",
+                icon: info,
+                iconAlt: "'i' inside a circle",
+                selected: false,
+                cost: 250
+            },
+            {
+                id: 2,
+                title: "Medium Complexity",
+                subtitle: "(Interactive, Customizable, Realtime)",
+                icon: customized,
+                iconAlt: "two toggle switches",
+                selected: false,
+                cost: 500
+            },
+            {
+                id: 3,
+                title: "High Complexity",
+                subtitle: "(Data Modeling and Computation)",
+                icon: data,
+                iconAlt: "outline of line graph",
+                selected: false,
+                cost: 1000
+            }
+        ],
+        active: false
+    },
+    {
+        id: 6,
+        title: "How many users do you expect?",
+        subtitle: "Select one.",
+        options: [
+            {
+                id: 1,
+                title: "0-10",
+                subtitle: null,
+                icon: person,
+                iconAlt: "person outline",
+                selected: false,
+                cost: 1
+            },
+            {
+                id: 2,
+                title: "10-100",
+                subtitle: null,
+                icon: persons,
+                iconAlt: "outline of two people",
+                selected: false,
+                cost: 1.125
+            },
+            {
+                id: 3,
+                title: "100+",
+                subtitle: null,
+                icon: people,
+                iconAlt: "outline of three people",
+                selected: false,
+                cost: 1.25
+            }
+        ],
+        active: false
+    }
+];
+
+const websiteQuestions = [
+    {
+        id: 1,
+        title: "Which service are you interested in?",
+        active: false,
+        options: [
+            {
+                id: 1,
+                title: "Custom Software Development",
+                subtitle: null,
+                icon: software,
+                iconAlt: "three floating screens",
+                selected: false,
+                cost: 0
+            },
+            {
+                id: 2,
+                title: "iOS/Android App Development",
+                subtitle: null,
+                icon: mobile,
+                iconAlt: "outlines of phones and tablets",
+                selected: false,
+                cost: 0
+            },
+            {
+                id: 3,
+                title: "Website Development",
+                subtitle: null,
+                icon: website,
+                iconAlt: "computer outline",
+                selected: false,
+                cost: 0
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: "Which type of website are you wanting?",
+        subtitle: "Select one.",
+        options: [
+            {
+                id: 1,
+                title: "Basic",
+                subtitle: "(Informational)",
+                icon: info,
+                iconAlt: "person outline",
+                selected: false,
+                cost: 1000
+            },
+            {
+                id: 2,
+                title: "Interactive",
+                subtitle: "(Users, API's, Messaging)",
+                icon: customized,
+                iconAlt: "outline of two people",
+                selected: false,
+                cost: 2000
+            },
+            {
+                id: 3,
+                title: "E-Commerce",
+                subtitle: "(Sales)",
+                icon: globe,
+                iconAlt: "outline of three people",
+                selected: false,
+                cost: 2500
+            }
+        ],
+        active: true
+    }
+];
 
 const Estimate = props => {
     const classes = useStyles();
@@ -71,73 +392,72 @@ const Estimate = props => {
     return (
         <Grid container direction="row">
             <Grid item container direction="column" lg>
-                <Grid item style={{marginTop: '2em', marginLeft: '5em'}}>
+                <Grid item style={{ marginTop: '2em', marginLeft: '5em' }}>
                     <Typography variant="h2">Estimate</Typography>
                 </Grid>
-                <Grid item style={{marginRight: '10em', maxWidth: '50em', marginTop: '7.5em'}}>
+                <Grid item style={{ marginRight: '10em', maxWidth: '50em', marginTop: '7.5em' }}>
                     <Lottie options={defaultOptions} height="100%" width="100%" />
                 </Grid>
             </Grid>
-            <Grid 
-                item 
-                container 
-                direction="column" 
+            <Grid
+                item
+                container
+                direction="column"
                 alignItems="center"
-                lg 
-                style={{marginRight: '2em', marginBottom: '25em'}}
+                lg
+                style={{ marginRight: '2em', marginBottom: '25em' }}
             >
-                <Grid item>
-                    <Typography 
-                        variant="h2" 
-                        align="center" 
-                        style={{
-                            fontWeight: 500, 
-                            fontSize: '2.25rem', 
-                            marginBottom: '2.5em', 
-                            marginTop: '5em'
-                        }} 
-                        gutterBottom
-                    >
-                        Which service are you interesed in?
-                    </Typography>
-                </Grid>
-                <Grid item container>
-                    <Grid item container direction="column" md>
-                        <Grid item style={{maxWidth: '12em'}}>
-                            <Typography variant="h6" align="center" style={{marginBottom: '1em'}}>
-                                Custom Software Development
+                {defaultQuestions.filter(question => question.active).map((question, index) => (
+                    <React.Fragment key={index}>
+                        <Grid item>
+                            <Typography
+                                variant="h2"
+                                align="center"
+                                style={{
+                                    fontWeight: 500,
+                                    fontSize: '2.25rem',
+                                    marginTop: '5em'
+                                }}
+                            >
+                                {question.title}
+                            </Typography>
+                            <Typography variant="body1" align="center" style={{marginBottom: '2.5em'}} gutterBottom>
+                                {question.subtitle}
                             </Typography>
                         </Grid>
-                        <Grid item>
-                            <img src={software}  alt="three floating screens" className={classes.icon}/>
+                        <Grid item container>
+                            {question.options.map(option => (
+                                <Grid item container direction="column" md>
+                                    <Grid item style={{ maxWidth: '12em' }}>
+                                        <Typography 
+                                            variant="h6" 
+                                            align="center" 
+                                            style={{ marginBottom: '1em' }}
+                                        >
+                                            {option.title}
+                                        </Typography>
+                                        <Typography variant="caption" align="center">
+                                            {option.subtitle}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <img 
+                                            src={option.icon} 
+                                            alt={option.iconAlt} 
+                                            className={classes.icon} 
+                                        />
+                                    </Grid>
+                                </Grid>
+                            ))}
                         </Grid>
-                    </Grid>
-                    <Grid item container direction="column" md>
-                        <Grid item style={{maxWidth: '12em'}}>
-                            <Typography variant="h6" align="center" style={{marginBottom: '1em'}}>
-                                iOS/Android App Development
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <img src={mobile} alt="phones and tablet outline" className={classes.icon}/>
-                        </Grid>
-                    </Grid>
-                    <Grid item container direction="column" md>
-                        <Grid item style={{maxWidth: '12em'}}>
-                            <Typography variant="h6" align="center" style={{marginBottom: '1em'}}>
-                                Custom Software Development
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <img src={website} alt="computer outline" className={classes.icon}/>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid 
-                    item 
-                    container 
-                    justify="space-between" 
-                    style={{width: '15em', marginTop: '3em'}}
+                    </React.Fragment>
+                ))}
+
+                <Grid
+                    item
+                    container
+                    justify="space-between"
+                    style={{ width: '15em', marginTop: '3em' }}
                 >
                     <Grid item>
                         <img src={backArrow} alt="Previous question" />
