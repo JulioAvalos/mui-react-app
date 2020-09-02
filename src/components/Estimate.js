@@ -94,229 +94,229 @@ const defaultQuestions = [
 const softwareQuestions = [
     { ...defaultQuestions[0], active: false },
     {
-      id: 2,
-      title: "Which platforms do you need supported?",
-      subtitle: "Select all that apply.",
-      options: [
-        {
-          id: 1,
-          title: "Web Application",
-          subtitle: null,
-          icon: website,
-          iconAlt: "computer outline",
-          selected: false,
-          cost: 100
-        },
-        {
-          id: 2,
-          title: "iOS Application",
-          subtitle: null,
-          icon: iPhone,
-          iconAlt: "outline of iphone",
-          selected: false,
-          cost: 100
-        },
-        {
-          id: 3,
-          title: "Android Application",
-          subtitle: null,
-          icon: android,
-          iconAlt: "outlines of android phone",
-          selected: false,
-          cost: 100
-        }
-      ],
-      active: true
+        id: 2,
+        title: "Which platforms do you need supported?",
+        subtitle: "Select all that apply.",
+        options: [
+            {
+                id: 1,
+                title: "Web Application",
+                subtitle: null,
+                icon: website,
+                iconAlt: "computer outline",
+                selected: false,
+                cost: 100
+            },
+            {
+                id: 2,
+                title: "iOS Application",
+                subtitle: null,
+                icon: iPhone,
+                iconAlt: "outline of iphone",
+                selected: false,
+                cost: 100
+            },
+            {
+                id: 3,
+                title: "Android Application",
+                subtitle: null,
+                icon: android,
+                iconAlt: "outlines of android phone",
+                selected: false,
+                cost: 100
+            }
+        ],
+        active: true
     },
     {
-      id: 3,
-      title: "Which features do you expect to use?",
-      subtitle: "Select all that apply.",
-      options: [
-        {
-          id: 1,
-          title: "Photo/Video",
-          subtitle: null,
-          icon: camera,
-          iconAlt: "camera outline",
-          selected: false,
-          cost: 25
-        },
-        {
-          id: 2,
-          title: "GPS",
-          subtitle: null,
-          icon: gps,
-          iconAlt: "gps pin",
-          selected: false,
-          cost: 25
-        },
-        {
-          id: 3,
-          title: "File Transfer",
-          subtitle: null,
-          icon: upload,
-          iconAlt: "outline of cloud with arrow pointing up",
-          selected: false,
-          cost: 25
-        }
-      ],
-      active: false
+        id: 3,
+        title: "Which features do you expect to use?",
+        subtitle: "Select all that apply.",
+        options: [
+            {
+                id: 1,
+                title: "Photo/Video",
+                subtitle: null,
+                icon: camera,
+                iconAlt: "camera outline",
+                selected: false,
+                cost: 25
+            },
+            {
+                id: 2,
+                title: "GPS",
+                subtitle: null,
+                icon: gps,
+                iconAlt: "gps pin",
+                selected: false,
+                cost: 25
+            },
+            {
+                id: 3,
+                title: "File Transfer",
+                subtitle: null,
+                icon: upload,
+                iconAlt: "outline of cloud with arrow pointing up",
+                selected: false,
+                cost: 25
+            }
+        ],
+        active: false
     },
     {
-      id: 4,
-      title: "Which features do you expect to use?",
-      subtitle: "Select all that apply.",
-      options: [
-        {
-          id: 1,
-          title: "Users/Authentication",
-          subtitle: null,
-          icon: usersIcon,
-          iconAlt: "outline of a person with a plus sign",
-          selected: false,
-          cost: 25
-        },
-        {
-          id: 2,
-          title: "Biometrics",
-          subtitle: null,
-          icon: biometrics,
-          iconAlt: "fingerprint",
-          selected: false,
-          cost: 25
-        },
-        {
-          id: 3,
-          title: "Push Notifications",
-          subtitle: null,
-          icon: bell,
-          iconAlt: "outline of a bell",
-          selected: false,
-          cost: 25
-        }
-      ],
-      active: false
+        id: 4,
+        title: "Which features do you expect to use?",
+        subtitle: "Select all that apply.",
+        options: [
+            {
+                id: 1,
+                title: "Users/Authentication",
+                subtitle: null,
+                icon: usersIcon,
+                iconAlt: "outline of a person with a plus sign",
+                selected: false,
+                cost: 25
+            },
+            {
+                id: 2,
+                title: "Biometrics",
+                subtitle: null,
+                icon: biometrics,
+                iconAlt: "fingerprint",
+                selected: false,
+                cost: 25
+            },
+            {
+                id: 3,
+                title: "Push Notifications",
+                subtitle: null,
+                icon: bell,
+                iconAlt: "outline of a bell",
+                selected: false,
+                cost: 25
+            }
+        ],
+        active: false
     },
     {
-      id: 5,
-      title: "What type of custom features do you expect to need?",
-      subtitle: "Select one.",
-      options: [
-        {
-          id: 1,
-          title: "Low Complexity",
-          subtitle: "(Informational)",
-          icon: info,
-          iconAlt: "'i' inside a circle",
-          selected: false,
-          cost: 25
-        },
-        {
-          id: 2,
-          title: "Medium Complexity",
-          subtitle: "(Interactive, Customizable, Realtime)",
-          icon: customized,
-          iconAlt: "two toggle switches",
-          selected: false,
-          cost: 50
-        },
-        {
-          id: 3,
-          title: "High Complexity",
-          subtitle: "(Data Modeling and Computation)",
-          icon: data,
-          iconAlt: "outline of line graph",
-          selected: false,
-          cost: 100
-        }
-      ],
-      active: false
+        id: 5,
+        title: "What type of custom features do you expect to need?",
+        subtitle: "Select one.",
+        options: [
+            {
+                id: 1,
+                title: "Low Complexity",
+                subtitle: "(Informational)",
+                icon: info,
+                iconAlt: "'i' inside a circle",
+                selected: false,
+                cost: 25
+            },
+            {
+                id: 2,
+                title: "Medium Complexity",
+                subtitle: "(Interactive, Customizable, Realtime)",
+                icon: customized,
+                iconAlt: "two toggle switches",
+                selected: false,
+                cost: 50
+            },
+            {
+                id: 3,
+                title: "High Complexity",
+                subtitle: "(Data Modeling and Computation)",
+                icon: data,
+                iconAlt: "outline of line graph",
+                selected: false,
+                cost: 100
+            }
+        ],
+        active: false
     },
     {
-      id: 6,
-      title: "How many users do you expect?",
-      subtitle: "Select one.",
-      options: [
-        {
-          id: 1,
-          title: "0-10",
-          subtitle: null,
-          icon: person,
-          iconAlt: "person outline",
-          selected: false,
-          cost: 1
-        },
-        {
-          id: 2,
-          title: "10-100",
-          subtitle: null,
-          icon: persons,
-          iconAlt: "outline of two people",
-          selected: false,
-          cost: 1.25
-        },
-        {
-          id: 3,
-          title: "100+",
-          subtitle: null,
-          icon: people,
-          iconAlt: "outline of three people",
-          selected: false,
-          cost: 1.5
-        }
-      ],
-      active: false
+        id: 6,
+        title: "How many users do you expect?",
+        subtitle: "Select one.",
+        options: [
+            {
+                id: 1,
+                title: "0-10",
+                subtitle: null,
+                icon: person,
+                iconAlt: "person outline",
+                selected: false,
+                cost: 1
+            },
+            {
+                id: 2,
+                title: "10-100",
+                subtitle: null,
+                icon: persons,
+                iconAlt: "outline of two people",
+                selected: false,
+                cost: 1.25
+            },
+            {
+                id: 3,
+                title: "100+",
+                subtitle: null,
+                icon: people,
+                iconAlt: "outline of three people",
+                selected: false,
+                cost: 1.5
+            }
+        ],
+        active: false
     }
-  ];
-  
-  
-  const websiteQuestions = [
+];
+
+
+const websiteQuestions = [
     { ...defaultQuestions[0], active: false },
     {
-      id: 2,
-      title: "Which type of website are you wanting?",
-      subtitle: "Select one.",
-      options: [
-        {
-          id: 1,
-          title: "Basic",
-          subtitle: "(Informational)",
-          icon: info,
-          iconAlt: "person outline",
-          selected: false,
-          cost: 100
-        },
-        {
-          id: 2,
-          title: "Interactive",
-          subtitle: "(Users, API's, Messaging)",
-          icon: customized,
-          iconAlt: "outline of two people",
-          selected: false,
-          cost: 200
-        },
-        {
-          id: 3,
-          title: "E-Commerce",
-          subtitle: "(Sales)",
-          icon: globe,
-          iconAlt: "outline of three people",
-          selected: false,
-          cost: 250
-        }
-      ],
-      active: true
+        id: 2,
+        title: "Which type of website are you wanting?",
+        subtitle: "Select one.",
+        options: [
+            {
+                id: 1,
+                title: "Basic",
+                subtitle: "(Informational)",
+                icon: info,
+                iconAlt: "person outline",
+                selected: false,
+                cost: 100
+            },
+            {
+                id: 2,
+                title: "Interactive",
+                subtitle: "(Users, API's, Messaging)",
+                icon: customized,
+                iconAlt: "outline of two people",
+                selected: false,
+                cost: 200
+            },
+            {
+                id: 3,
+                title: "E-Commerce",
+                subtitle: "(Sales)",
+                icon: globe,
+                iconAlt: "outline of three people",
+                selected: false,
+                cost: 250
+            }
+        ],
+        active: true
     }
-  ];
-  
+];
+
 const Estimate = props => {
     const classes = useStyles();
     const theme = useTheme();
     const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
     const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
-    const [questions, setQuestions] = useState(softwareQuestions);
+    const [questions, setQuestions] = useState(defaultQuestions);
 
     const defaultOptions = {
         loop: true,
@@ -333,8 +333,8 @@ const Estimate = props => {
         const activeIndex = currentlyActive[0].id - 1;
         const nextIndex = activeIndex + 1;
 
-        newQuestions[activeIndex] = {...currentlyActive[0], active: false};
-        newQuestions[nextIndex] = {...newQuestions[nextIndex], active: true};
+        newQuestions[activeIndex] = { ...currentlyActive[0], active: false };
+        newQuestions[nextIndex] = { ...newQuestions[nextIndex], active: true };
 
         setQuestions(newQuestions);
     };
@@ -345,8 +345,8 @@ const Estimate = props => {
         const activeIndex = currentlyActive[0].id - 1;
         const nextIndex = activeIndex - 1;
 
-        newQuestions[activeIndex] = {...currentlyActive[0], active: false};
-        newQuestions[nextIndex] = {...newQuestions[nextIndex], active: true};
+        newQuestions[activeIndex] = { ...currentlyActive[0], active: false };
+        newQuestions[nextIndex] = { ...newQuestions[nextIndex], active: true };
 
         setQuestions(newQuestions);
     };
@@ -354,7 +354,7 @@ const Estimate = props => {
     const navigationPreviousDisabled = () => {
         const currentlyActive = questions.filter(question => question.active);
 
-        if(currentlyActive[0].id === 1) {
+        if (currentlyActive[0].id === 1) {
             return true;
         } else {
             return false;
@@ -364,7 +364,7 @@ const Estimate = props => {
     const navigationNextDisabled = () => {
         const currentlyActive = questions.filter(question => question.active);
 
-        if(currentlyActive[0].id === questions[questions.length -1].id) {
+        if (currentlyActive[0].id === questions[questions.length - 1].id) {
             return true;
         } else {
             return false;
@@ -373,14 +373,41 @@ const Estimate = props => {
 
     const handleSelect = (id) => {
         const newQuestions = cloneDeep(questions);
-        const currentlyActive = questions.filter(question => question.active);
+        const currentlyActive = newQuestions.filter(question => question.active);
         const activeIndex = currentlyActive[0].id - 1;
 
         const newSelected = newQuestions[activeIndex].options[id - 1];
 
-        newSelected.selected = !newSelected.selected;
+        const previousSelected = currentlyActive[0].options.filter(
+            option => option.selected
+        );
 
-        setQuestions(newQuestions);
+        switch (currentlyActive[0].subtitle) {
+            case "Select one.":
+                if (previousSelected[0]) {
+                    previousSelected[0].selected = !previousSelected[0].selected;
+                }
+                newSelected.selected = !newSelected.selected;
+                break;
+            default:
+                newSelected.selected = !newSelected.selected;
+                break;
+        }
+
+        switch (newSelected.title) {
+            case 'Custom Software Development':
+                setQuestions(softwareQuestions);
+                break;
+            case 'iOS/Android App Development':
+                setQuestions(softwareQuestions);
+                break;
+            case 'Website Development':
+                setQuestions(websiteQuestions);
+                break;
+            default:
+                setQuestions(newQuestions);
+                break;
+        }
     };
 
     return (
@@ -416,16 +443,16 @@ const Estimate = props => {
                             >
                                 {question.title}
                             </Typography>
-                            <Typography variant="body1" align="center" style={{marginBottom: '2.5em'}} gutterBottom>
+                            <Typography variant="body1" align="center" style={{ marginBottom: '2.5em' }} gutterBottom>
                                 {question.subtitle}
                             </Typography>
                         </Grid>
                         <Grid item container>
                             {question.options.map(option => (
-                                <Grid 
-                                    item 
-                                    container 
-                                    direction="column" 
+                                <Grid
+                                    item
+                                    container
+                                    direction="column"
                                     md
                                     component={Button}
                                     onClick={() => handleSelect(option.id)}
@@ -437,9 +464,9 @@ const Estimate = props => {
                                     }}
                                 >
                                     <Grid item style={{ maxWidth: '14em' }}>
-                                        <Typography 
-                                            variant="h6" 
-                                            align="center" 
+                                        <Typography
+                                            variant="h6"
+                                            align="center"
                                             style={{ marginBottom: '1em' }}
                                         >
                                             {option.title}
@@ -449,10 +476,10 @@ const Estimate = props => {
                                         </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <img 
-                                            src={option.icon} 
-                                            alt={option.iconAlt} 
-                                            className={classes.icon} 
+                                        <img
+                                            src={option.icon}
+                                            alt={option.iconAlt}
+                                            className={classes.icon}
                                         />
                                     </Grid>
                                 </Grid>
