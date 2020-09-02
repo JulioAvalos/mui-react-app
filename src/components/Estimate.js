@@ -371,6 +371,18 @@ const Estimate = props => {
         }
     };
 
+    const handleSelect = (id) => {
+        const newQuestions = cloneDeep(questions);
+        const currentlyActive = questions.filter(question => question.active);
+        const activeIndex = currentlyActive[0].id - 1;
+
+        const newSelected = newQuestions[activeIndex].options[id - 1];
+
+        newSelected.selected = !newSelected.selected;
+
+        setQuestions(newQuestions);
+    };
+
     return (
         <Grid container direction="row">
             <Grid item container direction="column" lg>
@@ -398,7 +410,8 @@ const Estimate = props => {
                                 style={{
                                     fontWeight: 500,
                                     fontSize: '2.25rem',
-                                    marginTop: '5em'
+                                    marginTop: '5em',
+                                    lineHeight: 1.25
                                 }}
                             >
                                 {question.title}
@@ -414,8 +427,16 @@ const Estimate = props => {
                                     container 
                                     direction="column" 
                                     md
+                                    component={Button}
+                                    onClick={() => handleSelect(option.id)}
+                                    style={{
+                                        display: 'grid',
+                                        textTransform: 'none',
+                                        borderRadius: 0,
+                                        backgroundColor: option.selected ? theme.palette.common.orange : null
+                                    }}
                                 >
-                                    <Grid item style={{ maxWidth: '12em' }}>
+                                    <Grid item style={{ maxWidth: '14em' }}>
                                         <Typography 
                                             variant="h6" 
                                             align="center" 
