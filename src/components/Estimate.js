@@ -627,13 +627,15 @@ const Estimate = props => {
 
         if(questions.length === 2) {
             if(emptySelections.length === 1) {
-                return false;   
+                disabled = false;   
             }
         } else if (questions.length === 1 ) {
-            return true;
+            disabled = true;
+        } else if (emptySelections.length < 3 && questions[questions.length -1].options.filter(option => option.selected).length > 0) {
+            disabled = false;
         }
 
-        console.log(emptySelections);
+        return disabled;
     }
 
     const softwareSelection = (
