@@ -487,10 +487,13 @@ const Estimate = props => {
         if (questions.length > 2) {
             const userCost = questions.filter(
                 question => question.title === "How many users do you expect?"
-            ).map(question => question.options.filter(option => option.selected))[0][0].cost;
+            ).map(question => question.options.filter(option => option.selected))[0][0];
 
-            cost -= userCost;
-            cost *= userCost;
+
+            setUsers(userCost.title);
+
+            cost -= userCost.cost;
+            cost *= userCost.cost;
 
             console.log(cost);
         }
@@ -527,7 +530,16 @@ const Estimate = props => {
             setFeatures(newFeatures);
         }
 
-    }
+    };
+
+    const getCustomFeatures = () => {
+        if(questions.length > 2) {
+            const newCustomFeatures = questions.filter(question => question.title === "What type of custom features do you expect to need?")
+            .map(question => question.options.filter(option => option.selected))[0][0].title
+
+            setCustomFeatures(newCustomFeatures);
+        }
+    };
 
     return (
         <Grid container direction="row">
@@ -633,6 +645,7 @@ const Estimate = props => {
                             getTotal();
                             getPlatforms();
                             getFeatures();
+                            getCustomFeatures();
                         }}
                     >
                         Get Estimate
@@ -787,7 +800,11 @@ const Estimate = props => {
                                             <img src={check} alt="checkmark"/>
                                         </Grid>
                                         <Grid item>
-                                            <Typography body="body1">Third options check</Typography>
+                                            <Typography body="body1">
+                                                The custom features will be of {" "}
+                                                {customFeatures.toLowerCase()}
+                                                {`, and the project will be used by about ${users} users.`}
+                                            </Typography>
                                         </Grid>
                                     </Grid>
                                 </Grid>
