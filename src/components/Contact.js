@@ -385,6 +385,7 @@ const Contact = props => {
                                 fullWidth
                                 className={classes.message}
                                 multiline
+                                placeholder="Tell us more about your project"
                                 rows={10}
                                 id="message"
                                 onChange={event => setMessage(event.target.value)}

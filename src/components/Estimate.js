@@ -804,12 +804,13 @@ const Estimate = props => {
                             </Typography>
                         </Grid>
                         <Grid item container>
-                            {question.options.map(option => (
+                            {question.options.map((option, index) => (
                                 <Grid
                                     item
                                     container
                                     direction="column"
                                     md
+                                    key={index}
                                     component={Button}
                                     onClick={() => handleSelect(option.id)}
                                     style={{
@@ -942,16 +943,22 @@ const Estimate = props => {
                                 <TextField
                                     InputProps={{ disableUnderline: true }}
                                     value={message}
-                                    fullWidth
                                     className={classes.message}
                                     multiline
+                                    fullWidth
+                                    placeholder="Tell us more about your project"
                                     rows={10}
                                     id="message"
                                     onChange={event => setMessage(event.target.value)}
                                 />
                             </Grid>
                             <Grid item>
-                                <Typography variant="body1" align={matchesSM ? 'center' : undefined} paragraph>
+                                <Typography 
+                                    variant="body1" 
+                                    align={matchesSM ? 'center' : undefined} 
+                                    paragraph
+                                    style={{ lineHeight: 1.25 }}
+                                >
                                     We can create this digital solution for an estimated{" "}
                                     <span className={classes.specialText}>${total.toFixed(2)}</span>
                                 </Typography>
@@ -980,6 +987,11 @@ const Estimate = props => {
                                     variant="contained" 
                                     className={classes.estimateButton}
                                     onClick={sendEstimate}
+                                    disabled={
+                                        name.length === 0 || message.length === 0 ||
+                                        email.length === 0 || phone.length === 0 ||
+                                        phoneHelper.length !== 0 || emailHelper.length !== 0
+                                    }
                                 >
                                     {loading ? <CircularProgress /> : 
                                         <React.Fragment>
