@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { cloneDeep } from 'lodash';
 import Lottie from 'react-lottie';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -11,6 +12,8 @@ import Hidden from '@material-ui/core/Hidden';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import TextField from '@material-ui/core/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import check from "../assets/check.svg";
 import send from "../assets/send.svg";
@@ -353,6 +356,14 @@ const Estimate = props => {
     const [category, setCategory] = useState("");
     const [users, setUsers] = useState("");
 
+    const [loading, setLoading] = useState(false);
+
+    const [alert, setAlert] = useState({
+        open: false, 
+        message: "", 
+        backgroundColor: ""
+    });
+
     const defaultOptions = {
         loop: true,
         autoplay: false,
@@ -567,6 +578,62 @@ const Estimate = props => {
 
             setCategory(newCategory);
         }
+    }
+
+    const sendEstimate = () => {
+        setLoading(true);
+        axios.get(
+            'https://us-central1-ng-recipe-book-19d7d.cloudfunctions.net/sendMail',
+            { params: {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                total: total,
+                category: category,
+                platforms: platforms,
+                service: service,
+                features: features,
+                customFeatures: customFeatures,
+                users: users
+            }}
+        )
+        .then(res => {
+            setLoading(false);
+            setAlert({
+                open: true,
+                message: "Estimate placed successfully!",
+                backgroundColor: "#4BB543"
+            });
+            setDialogOpen(false);
+        })
+        .catch(err => {
+            setLoading(false);
+            setAlert({
+                open: true,
+                message: "Something went wrong, please try again!",
+                backgroundColor: "#FF3232"
+            });
+        });
+    };
+
+    const estimateDisabled = () => {
+        let disabled = true;
+
+        const emptySelections = questions.map(
+            question => question.options.filter(option => option.selected)
+        )
+        .filter(question => question.length === 0);
+
+        if(questions.length === 2) {
+            if(emptySelections.length === 1) {
+                return false;   
+            }
+        } else if (questions.length === 1 ) {
+            return true;
+        }
+
+        console.log(emptySelections);
     }
 
     const softwareSelection = (
@@ -797,6 +864,7 @@ const Estimate = props => {
                     <Button 
                         variant="contained" 
                         className={classes.estimateButton} 
+                        disabled={estimateDisabled()}
                         onClick={() => {
                             setDialogOpen(true);
                             getTotal();
@@ -906,9 +974,16 @@ const Estimate = props => {
                                 </Grid>
                             </Hidden>
                             <Grid item>
-                                <Button variant="contained" className={classes.estimateButton}>
-                                    Place Request
-                                    <img src={send}  alt="paper airplane" style={{marginLeft: '0.5em'}}/>
+                                <Button 
+                                    variant="contained" 
+                                    className={classes.estimateButton}
+                                    onClick={sendEstimate}
+                                >
+                                    {loading ? <CircularProgress /> : 
+                                        <React.Fragment>
+                                            Place Request
+                                            <img src={send}  alt="paper airplane" style={{marginLeft: '0.5em'}}/>
+                                        </React.Fragment>}
                                 </Button>
                             </Grid>
                             <Hidden mdUp>
@@ -926,6 +1001,18 @@ const Estimate = props => {
                     </Grid> 
                 </DialogContent>
             </Dialog>
+            <Snackbar 
+                open={alert.open} 
+                message={alert.message}
+                ContentProps={{
+                    style: {
+                        backgroundColor: alert.backgroundColor
+                    }
+                }}
+                anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+                onClose={()=>setAlert({...alert, open: false})}
+                autoHideDuration={4000}
+            />
         </Grid>
     );
 }
